@@ -1,0 +1,21 @@
+.selection button {
+	display:block;
+}
+
+.container div {
+	display:inline-block;
+	border-style:solid;
+	border-width:1px;
+	border-radius:5px;
+}
+
+button {
+	width: 100px;
+	border-radius:5px;
+	color:red;
+}
+
+
+body {
+	background-color: #f5f5f5;
+}
