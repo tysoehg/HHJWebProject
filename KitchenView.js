@@ -1,68 +1,82 @@
+// FRONT END
 class KitchenView 
 {
 	constructor(openOrders, out)
 	{
 		this.openOrders = openOrders;
 		this.out = out;
-		var orderHeading = "<tr><th>Table Number</th><th>notes</td></tr>";
-		
-		var displayCourse = function(course)
+		var orderHeading = "<tr><th>Table Number</th><th>notes</th></tr>";
+		this.displayAllOrders = function()
 		{
-			for (var n = 0; n < course.length; n ++)
+			for (var i = 0; i < openOrders.length; i++) // per order
 			{
-				out.innerHTML = out.innerHTML 
-				+ "<tr><td>" 
-				+ course[n].name 
-				+ "</td><td><button " + ">" 
-				+ "del "
-				+ "</button></td></tr>";
+				this.order = openOrders[i];
+				this.tableNumber = this.order.tableNumber;
+				var notes = " ";
+				if (this.order.notes != null)
+				{
+					var notes = this.order.notes;
+				}
+				if (this.order.courses.length > 0)
+				{
+					out.innerHTML = out.innerHTML 
+					+ orderHeading 
+					+ "<tr><td>" 
+					+ this.tableNumber 
+					+ "</td><td>" 
+					+ notes 
+					+ "</td></tr>"; 
+					for (var x = 0; x < this.order.courses.length; x++)
+					{
+						console.log(this.order.courses[x]);	
+						if (this.order.courses[x].length > 0)
+						{
+							displayCourse(this.order.orderID, this.order.courses[x]);
+						}
+					}
+					out.innerHTML = out.innerHTML + "<tr>___________________</tr>";	
+				}
 			}
 		}
 		
-		this.displayAllOrders = function()
+		var displayCourse = function(orderID, course)
 		{
-			for (var i = 0; i < openOrders.length; i ++) // per order
+			out.innerHTML = out.innerHTML + "<tr>xxx</tr>"
+			for (var n = 0; n < course.length; n++)
 			{
-				var order = openOrders[i];
-				var tableNumber = order.tableNumber;
-				
-				if (order.notes != null)
-				{
-					var notes = order.notes;
-				}
-				else 
-				{
-					var notes = " ";
-				}
-				
 				out.innerHTML = out.innerHTML 
-				+ orderHeading 
 				+ "<tr><td>" 
-				+ tableNumber 
-				+ "</td><td>" 
-				+ order.notes 
-				+ "</td></tr>"; 
-				
-				if (order.firstCourse != null)
+				+ course[n].name
+				+ '</td><td><button onclick="kv.removeItem('
+				+ orderID + ', '
+				+ course[n].menuItemID + ');">x</button></td></tr>';
+			}
+		}
+		
+		var resetTable = function()
+		{
+			out.innerHTML = "<table id='ordersout'></table>";
+		}
+		
+		this.removeItem = function(thisOrderID, menuItemID)
+		{
+			var order = {};
+			for (var l = 0; l < orders.length; l++)
+			{
+				if (orders[l].orderID == thisOrderID)
 				{
-					out.innerHTML = out.innerHTML + "<tr>1</tr>";
-					displayCourse(order.firstCourse);
+				//	if (
+					orders[l].removeItem(menuItemID)//)
+				//	{
+						resetTable();
+						this.displayAllOrders();
+				//	}
 				}
-				if (order.secondCourse != null)
-				{
-					out.innerHTML = out.innerHTML + "<tr>2</tr>";
-					displayCourse(order.secondCourse);
-				}
-				if (order.thirdCourse != null)
-				{
-					out.innerHTML = out.innerHTML + "<tr>3</tr>";
-					displayCourse(order.thirdCourse);
-				}
-				out.innerHTML = out.innerHTML + "<tr>___________________</tr>";	
 			}
 		}
 	}
 }
+
 var kv = new KitchenView(orders, output);
 kv.displayAllOrders();
 
