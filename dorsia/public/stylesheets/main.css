@@ -1,0 +1,69 @@
+body
+{
+	font-family: monospace;
+	background-color: #fcfcfc;
+}
+.selection button 
+{
+	display:block;
+}
+
+.container div 
+{
+	display:inline-block;
+	border-style:solid;
+	border-width:1px;
+	border-radius:5px;
+}
+
+button 
+{
+	width: 100%;
+	height: 25px;
+	border-radius:5px;
+	background-color: #ff007b;
+	border: none;
+}
+.dbutton
+{
+	font-size: 1em;
+	height: 50px;
+}
+.selecttable
+{
+}
+#tables
+{
+}
+#order
+{
+	font-size: 1.5em;
+}
+table
+{
+	width: 60%;
+	border: 1px solid grey;
+	padding: 0.5em;
+}
+
+@media only screen and (max-width: 1800px)
+{
+	button
+	{
+		
+	}
+	table
+	{
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 1000px)
+{
+	button
+	{
+	}
+	a
+	{
+		font-size: 200%;
+	}
+}

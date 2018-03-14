@@ -1,0 +1,18 @@
+extends layout
+
+block content
+	h1= title
+	script(src='/javascripts/socket.io.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+	script(src='/model/Order.js')
+	script(src='/model/MenuItem.js')
+	script(src='/javascripts/kitchenFunctions.js')
+	p Welcome to our Restaurant
+	// Wrapper
+	#wrapper
+		
+		// ORDERS
+		h2 Orders
+		#orders
+			table 
+				tbody
